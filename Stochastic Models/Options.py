@@ -5,30 +5,9 @@ Created on Fri Jan 30 20:02:24 2026
 @author: User
 """
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #===========================TODO=========================================#
 '''Maybe standarize the normal (even tough its form N(0,1))
 add seed'''
-
-
-
-
-
-
 
 
 
@@ -39,6 +18,7 @@ import webbrowser
 import os
 from scipy.stats import norm
 from scipy.optimize import brentq
+import matplotlib.pyplot as plt
 
 
 def bs_call_price(sigma, S, K, T, r):
@@ -60,12 +40,12 @@ def find_iv(market_price, S, K, T, r):
 n_paths = 10000      
 n_steps = 1000
 r = 0.05
-sigma = 0.2
+sigma = 0.15
 S0 = 100
 l = 2.0             
 box_nmbr = 3
-m_dbl_exp = 0.05  
-b_dbl_exp = 0.05    
+m_dbl_exp = -0.01  
+b_dbl_exp = 0.15    
 
 K_values = np.linspace(80, 200, 10)
 T_values = np.linspace(0.2, 2.0, 10)
@@ -147,5 +127,12 @@ fig.update_layout(
 file_path = 'price_surface.html'
 fig.write_html(file_path)
 webbrowser.open('file://' + os.path.realpath(file_path))
+import matplotlib.pyplot as plt
 
+plt.figure()
+plt.plot(paths[:10].T) 
+plt.title("Sciezki cen akcji")
+plt.xlabel("Krok czasu")
+plt.ylabel("Cena S")
+plt.show()
 
