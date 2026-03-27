@@ -127,7 +127,6 @@ fig.update_layout(
 file_path = 'price_surface.html'
 fig.write_html(file_path)
 webbrowser.open('file://' + os.path.realpath(file_path))
-import matplotlib.pyplot as plt
 
 plt.figure()
 plt.plot(paths[:10].T) 
